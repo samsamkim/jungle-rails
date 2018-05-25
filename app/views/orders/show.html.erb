@@ -5,9 +5,43 @@
   </header>
 
   <div class="order-summary jumbotron">
+    <h3>Order Summary</h3>
+    <h4>You ordered:</h4>
+    <div >
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th colspan="2">Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @line_items.each do |item|%>
+           <tr>
+              <th><%= image_tag Product.find_by(id: item.product_id).image.tiny %></th>
+              <th><%= Product.find_by(id: item.product_id).name %></th>
+              <th><%= item.item_price_cents / 100.00 %></th>
+              <th><%= item.quantity %></th>
+              <th><%= item.total_price_cents / 100.00 %></th>
+           </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="4">
+              TOTAL: <%= @order.total_cents / 100.00%>
+
+            </th>
+            <th>
+              <%= @cart_total %>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
     <h4>Thank you for your order!</h4>
   </div>
-
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
-
 </section>
