@@ -1,38 +1,39 @@
 <section class="cart-show">
-
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
-
-  <div class="panel panel-default items">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th colspan="2">Product</th>
-          <th>Unit Price</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @cart_total = 0 %>
-        <% cart.each do |product_id, details| %>
-          <%= render 'item', product_id: product_id, details: details %>
-        <% end %>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th colspan="4">
-            TOTAL:
-          </th>
-          <th>
-            <%= @cart_total %>
-          </th>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-
+  <% if cart.size == 0 %>
+    Oh no! There's nothing in your cart! Don't let your memes be memes my dudes!
+    <%= link_to "Go Back", [:root]%>
+  <% else %>
+    <div class="panel panel-default items">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th colspan="2">Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_total = 0 %>
+          <% cart.each do |product_id, details| %>
+            <%= render 'item', product_id: product_id, details: details %>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="4">
+              TOTAL:
+            </th>
+            <th>
+              <%= @cart_total %>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   <div class="row">
     <div class="col-xs-12">
       <%= form_tag orders_path do %>
@@ -49,5 +50,6 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 
 </section>
