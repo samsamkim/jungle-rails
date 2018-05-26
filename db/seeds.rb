@@ -29,6 +29,7 @@ cat1 = Category.find_or_create_by! name: 'Apparel'
 cat2 = Category.find_or_create_by! name: 'Electronics'
 cat3 = Category.find_or_create_by! name: 'Furniture'
 
+
 ## PRODUCTS
 
 puts "Re-creating Products ..."
@@ -132,5 +133,44 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+User.create! ({
+  email: "hello@hello.com",
+  password_digest: "asdasd",
+  first_name: "karl",
+  last_name: "christ",
+})
+
+User.create! ({
+  email: "rails@suck.com",
+  password_digest: "worstthingever",
+  first_name: "this is a",
+  last_name: "meme",
+})
+user1 = User.find(1)
+user2 = User.find(2)
+shelf = Product.find(12)
+product1 = Product.find(10)
+
+Review.create!({
+  product_id: shelf.id,
+  user_id: user1.id,
+  description: "memes are dreams",
+  rating: 5,
+})
+
+
+Review.create!({
+  product_id: shelf.id,
+  user_id: user2.id,
+  description: "u wot m8",
+  rating: 1,
+})
+
+Review.create!({
+  product_id: product1.id,
+  user_id: user2.id,
+  description: "wednesday my dudes",
+  rating: 2,
+})
 
 puts "DONE!"

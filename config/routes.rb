@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'products#index'
 
-  resources :products, only: [:index, :show]
+  resources :products, only: [:index, :show] do
+    resources :reviews, only: [:create]
+  end
   resources :categories, only: [:show]
 
 
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories, except: [:edit, :update, :delete]
   end
+
+
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'

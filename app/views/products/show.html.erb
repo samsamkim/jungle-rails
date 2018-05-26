@@ -23,9 +23,37 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
         </dl>
-      </div>
     </div>
 
   </article>
+        <div>
+
+          <% total = 0%>
+          <% @reviews.each do |review| %>
+
+          Name: <%= review.user.first_name%>
+          <%= review.user.last_name%><br>
+
+          Rating: <%= review.rating %><br>
+          <% total += review.rating %>
+          Description: <%= review.description %><br><br>
+          <% end %>
+
+          Product Rating: <%= total / @reviews.length %>
+          <%= form_for :review, url: @product.id.to_s+"/reviews"  do |f| %>
+          </div>
+
+          <dl class="dl-horizontal">
+                    <dt><h4>Write a review</h4></dt>
+                    <dd></dd>
+          <dt>Rating:</dt>
+          <dd><%= f.select :rating, [1,2,3,4,5], class:"form-control" %></dd>
+          <dt>Description:</dt>
+          <dd><%= f.text_area :description,  class:"form-control"%></dd>
+          <dd><%= f.submit "Submit", class:"btn btn-primary"%></dd>
+          <% end %>
+
+          </dl>
+      </div>
 
 </section>
