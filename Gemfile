@@ -62,6 +62,11 @@ group :production do
 end
 
 group :test do
-  gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner', '~> 1.5'
+  gem 'capybara'
+  gem 'poltergeist'
+
+
+
 end

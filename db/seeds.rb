@@ -146,6 +146,8 @@ User.create! ({
   first_name: "this is a",
   last_name: "meme",
 })
+
+
 user1 = User.find(1)
 user2 = User.find(2)
 shelf = Product.find(12)
