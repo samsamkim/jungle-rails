@@ -39,7 +39,7 @@
           Description: <%= review.description %><br><br>
           <% end %>
 
-          Product Rating: <%= total / @reviews.length %>
+          Product Rating: <%= @reviews.length == 0 ? 0 : total / @reviews.length  %>
           <%= form_for :review, url: @product.id.to_s+"/reviews"  do |f| %>
           </div>
 
