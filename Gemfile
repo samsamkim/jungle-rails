@@ -66,7 +66,7 @@ group :test do
   gem 'database_cleaner', '~> 1.5'
   gem 'capybara'
   gem 'poltergeist'
-
+  gem 'capybara-screenshot'
 
 
 end
